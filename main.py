@@ -9,17 +9,17 @@ bot = TeleBot(BOT_TOKEN, threaded=False)
 hideBoard = types.ReplyKeyboardRemove()
 
 # admin id chat
-ADMIN_CHAT_ID = "225180756"
+ADMIN_CHAT_ID = ""
 
 # ChatAperta
 ChatAperta = False
 
 # IMAGELINK
-immagine_scuola = "<a href=\"https://scontent.fnap5-2.fna.fbcdn.net/v/t39.30808-6/304227486_502400168557034_6474539857427809767_n.png?_nc_cat=107&ccb=1-7&_nc_sid=09cbfe&_nc_ohc=J_0NS5AvOO4AX-ZGtTs&_nc_ht=scontent.fnap5-2.fna&oh=00_AfAQbPyEOITud7o8icHk-Nm40p4GCdcAnu3zSO2N9QTU9Q&oe=64A8CD20\">\n🏞</a>"
+immagine_scuola = "<a href=\"https://">\n🏞</a>"
 
 @bot.message_handler(commands=['start'])
 def start(message):
-    bot.reply_to(message, f"👋 {message.from_user.username}, sono il bot del Centroscolastico ASPI SRL")
+    bot.reply_to(message, f"👋 {message.from_user.username}, sono il bot")
 
     text = f"Cosa vuoi fare? {immagine_scuola}"
 
@@ -36,7 +36,7 @@ def steamMarkup():
 def any(message):
     forward_message(message)
     if 'info' in message.text:
-        bot.reply_to(message, "Siamo la scuola centroscolasticoaspi. Centro Accreditato dalla Regione Campania")
+        bot.reply_to(message, "")
     elif 'social' in message.text:
         bot.reply_to(message, "Puoi contattarci su \ninstagram \nfacebook \nwhatsapp.", reply_markup=step_markup())
     elif 'parla con un admin' in message.text:
@@ -48,10 +48,10 @@ def any(message):
 
 def step_markup():
     markup = InlineKeyboardMarkup(row_width=2)
-    markup.add(InlineKeyboardButton("Instagram", url="https://www.instagram.com/centroscolasticoaspi/"),
-               InlineKeyboardButton("Whatsapp", url="https://wa.me/3464794098"))
-    markup.add(InlineKeyboardButton("Facebook", url="https://www.facebook.com/aspi.centro"),
-               InlineKeyboardButton("Pagina Facebook", url="https://www.facebook.com/aspi.centro"))
+    markup.add(InlineKeyboardButton("Instagram", url="https://www.instagram.com/"),
+               InlineKeyboardButton("Whatsapp", url="https://wa.me/"))
+    markup.add(InlineKeyboardButton("Facebook", url="https://www.facebook.com/"),
+               InlineKeyboardButton("Pagina Facebook", url="https://www.facebook.com/"))
     return markup
 
 @bot.callback_query_handler(func=lambda call: True)
